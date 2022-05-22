@@ -2,7 +2,7 @@ namespace WinRGZOSI
 {
     public partial class Emulator : Form
     {
-        // создаем обьект модели, чтобы инициализировать свойства естественно
+        // СЃРѕР·РґР°РµРј РѕР±СЊРµРєС‚ РјРѕРґРµР»Рё, С‡С‚РѕР±С‹ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРІРѕР№СЃС‚РІР° РµСЃС‚РµСЃС‚РІРµРЅРЅРѕ
         Model model;
         public Emulator()
         {
@@ -10,7 +10,7 @@ namespace WinRGZOSI
             InitializeComponent();
         }
 
-        // это всякий мусор в виде ховер эффектов, кнопок и тд
+        // РІСЃСЏРєРёР№ РјСѓСЃРѕСЂ РІ РІРёРґРµ С…РѕРІРµСЂ СЌС„С„РµРєС‚РѕРІ, РєРЅРѕРїРѕРє Рё С‚Рґ
         private void ExitHover(object sender, EventArgs e) => this.ExitPanel.BackColor = System.Drawing.Color.Tomato;
         private void ExitHoverLeave(object sender, EventArgs e) => this.ExitPanel.BackColor = System.Drawing.Color.LightCoral;
         private void ExitClick(object sender, EventArgs e) => Application.Exit();
@@ -35,7 +35,7 @@ namespace WinRGZOSI
                 ExceptionLabel.Visible = true;
         }
 
-        // Это чудо-юдо кидает эксепшн, если происходит полный хаос при конвертации в целчисл
+        // Р­С‚Рѕ С‡СѓРґРѕ-СЋРґРѕ РєРёРґР°РµС‚ СЌРєСЃРµРїС€РЅ, РµСЃР»Рё РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕР»РЅС‹Р№ С…Р°РѕСЃ РїСЂРё РєРѕРЅРІРµСЂС‚Р°С†РёРё РІ С†РµР»С‡РёСЃР»
         private bool isConverted(TextBox textBox)
         {
             try
@@ -49,7 +49,7 @@ namespace WinRGZOSI
             return true;
         }
 
-        // если все входные параметры валидны(цеслчисл и не пустые), то тру
+        // РµСЃР»Рё РІСЃРµ РІС…РѕРґРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РІР°Р»РёРґРЅС‹(С†РµСЃР»С‡РёСЃР» Рё РЅРµ РїСѓСЃС‚С‹Рµ), С‚Рѕ С‚СЂСѓ
         private bool Check()
         {
             if (BuffersAmount.Text.Length != 0 && BufferSize.Text.Length != 0 && FileSize.Text.Length != 0 &&
@@ -59,16 +59,16 @@ namespace WinRGZOSI
                 return false;
         }
 
-        // обновляет панельки 
+        // РѕР±РЅРѕРІР»СЏРµС‚ РїР°РЅРµР»СЊРєРё 
         private void Update()
         {
-            // здесь крч апкаст всех панелек к *flowpanel.Controls. 
+            // Р·РґРµСЃСЊ РєСЂС‡ Р°РїРєР°СЃС‚ РІСЃРµС… РїР°РЅРµР»РµРє Рє *flowpanel.Controls. 
             foreach (Panel Panel in bufferflowpanel.Controls)
                 Panel.Hide();
             foreach (Panel Panel in vzuflowpanel.Controls)
                 Panel.Hide();
 
-            // скрыли старые - обновили новые
+            // СЃРєСЂС‹Р»Рё СЃС‚Р°СЂС‹Рµ - РѕР±РЅРѕРІРёР»Рё РЅРѕРІС‹Рµ
             for (int i = 0; i != model.CountOfVZU; ++i)
                 vzuflowpanel.Controls[i].Visible = true;
             for (int i = 0; i != model.BufferAmount; ++i)
